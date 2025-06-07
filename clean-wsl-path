@@ -1,0 +1,4 @@
+if [[ -n "${WSL_DISTRO_NAME:-}" ]]; then
+  PATH=$(echo ":$PATH:" | sed "s,:/mnt/.*:,:,g" | sed 's,^:,,' | sed 's,:$,,')
+  export PATH
+fi

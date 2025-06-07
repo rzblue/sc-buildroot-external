@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ryan Blue <ryanzblue@gmail.com>
-Date: Mon, 7 Jun 2025 02:04:01 -0400
+Date: Sat, 7 Jun 2025 14:42:34 -0400
 Subject: [PATCH] Restrict cmake_minimum_required to 3.28
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] Restrict cmake_minimum_required to 3.28
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 21470c1..9d49201 100644
+index 21470c1ab931dd18be5826c793bdfd2f7e87ca5d..9d49201d5f93778dc99587e4659133910df8550d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,4 +1,4 @@

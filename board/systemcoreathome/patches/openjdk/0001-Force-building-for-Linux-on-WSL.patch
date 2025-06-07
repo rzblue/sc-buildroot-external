@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ryan Blue <ryanzblue@gmail.com>
+Date: Sat, 7 Jun 2025 14:50:10 -0400
+Subject: [PATCH] Force building for Linux on WSL
+
+---
+ make/autoconf/build-aux/config.guess | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/make/autoconf/build-aux/config.guess b/make/autoconf/build-aux/config.guess
+index afdf7cb5f9205c0041d94d220dcd9ce5fb27f348..d258eb0bdf4c7052c192492864f47162a7f9851f 100644
+--- a/make/autoconf/build-aux/config.guess
++++ b/make/autoconf/build-aux/config.guess
+@@ -72,7 +72,9 @@ echo $OUT | grep '\(unknown\|pc\)-linux-gnu' > /dev/null 2> /dev/null
+ if test $? = 0; then
+   uname -r | grep -i microsoft > /dev/null 2> /dev/null
+   if test $? = 0; then
+-    OUT=`echo $OUT | sed -e 's/\(unknown\|pc\)-linux-gnu/pc-wsl/'`
++    # OUT=`echo $OUT | sed -e 's/\(unknown\|pc\)-linux-gnu/pc-wsl/'`
++    # No, we actually do want to build for Linux:
++    OUT=`echo $OUT | sed -e 's/\(unknown\|pc\)-linux-gnu/unknown-linux-gnu/'`
+   fi
+ fi
+ 
