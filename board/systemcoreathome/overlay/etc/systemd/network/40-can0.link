@@ -1,0 +1,6 @@
+[Match]
+Name=can*
+
+[Link]
+RxCoalesceIrqSec=1000us
+RxMaxCoalescedIrqFrames=16
