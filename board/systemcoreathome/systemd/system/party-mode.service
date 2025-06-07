@@ -1,0 +1,10 @@
+[Unit]
+Description=party mode
+
+[Service]
+Type=exec
+ExecStart=bash -c "while true; do cansend can0 01011840#; cansend can0 060E00C0#EF00400000000001; sleep 0.02; done;"
+ExecStopPost=bash -c "cansend can0 060E00C0#EF00000000000001"
+
+[Install]
+WantedBy=basic.target
