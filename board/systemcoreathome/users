@@ -1,1 +1,1 @@
-systemcore -2 systemcore -2 =systemcore /home/systemcore /bin/bash sudo
+systemcore -2 systemcore -2 =systemcore /home/systemcore /bin/bash adm,dialout,cdrom,floppy,sudo,audio,video,plugdev,netdev
