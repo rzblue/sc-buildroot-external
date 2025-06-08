@@ -1,5 +1,5 @@
 [Match]
-Name=can*
+Type=can
 
 [Link]
 RxCoalesceIrqSec=1000us
