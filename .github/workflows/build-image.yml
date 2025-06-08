@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     env:
-      O: '${{ github.workspace }}/output'
+      OUT_DIR: '${{ github.workspace }}/output'
       BR2_EXTERNAL: '${{ github.workspace }}/sc-buildroot-external'
       BR2_DL_DIR: '${{ github.workspace }}/buildroot-dl'
       BR2_CCACHE_DIR: '${{ github.workspace }}/buildroot-ccache'
@@ -34,16 +34,20 @@ jobs:
           path: buildroot-dl
           key: buildroot-dlcache-${{ hashFiles('sc-buildroot-external/configs/**') }}
       - name: Configure buildroot
-        run: make -C buildroot ${{ env.DEFCONFIG }}
+        run: make -C buildroot O=${{ env.OUT_DIR }} ${{ env.DEFCONFIG }}
+      - name: Set ccache options
+        run: make -C buildroot O=${{ env.OUT_DIR }} CCACHE_OPTIONS="--max-size=1G --zero-stats" ccache-options
       - name: Build buildroot
-        run: make -C buildroot
+        run: make -C buildroot O=${{ env.OUT_DIR }}
+      - name: Print cache stats
+        run: make -C buildroot O=${{ env.OUT_DIR }} ccache-stats
       - name: Upload image
         uses: actions/upload-artifact@v4
         with:
           name: sdcard-img
-          path: ${{ env.O }}/images/sdcard.img
+          path: ${{ env.OUT_DIR }}/images/sdcard.img
       - name: Upload rootfs
         uses: actions/upload-artifact@v4
         with:
           name: rootfs-tar
-          path: ${{ env.O }}/images/rootfs.tar
+          path: ${{ env.OUT_DIR }}/images/rootfs.tar
