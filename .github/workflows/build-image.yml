@@ -1,0 +1,49 @@
+name: Build image
+
+on: [pull_request, push]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      O: '${{ github.workspace }}/output'
+      BR2_EXTERNAL: '${{ github.workspace }}/sc-buildroot-external'
+      BR2_DL_DIR: '${{ github.workspace }}/buildroot-dl'
+      BR2_CCACHE_DIR: '${{ github.workspace }}/buildroot-ccache'
+      BR2_USE_CCACHE: 1
+      DEFCONFIG: systemcoreathome_defconfig
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: sc-buildroot-external
+      - uses: actions/checkout@v4
+        with:
+          repository: buildroot/buildroot
+          ref: "2025.02.3"
+          path: buildroot
+      - uses: actions/cache@v4
+        with:
+          path: buildroot-ccache
+          key: buildroot-ccache-${{ hashFiles('sc-buildroot-external/configs/**') }}
+      - uses: actions/cache@v4
+        with:
+          path: buildroot-dl
+          key: buildroot-dlcache-${{ hashFiles('sc-buildroot-external/configs/**') }}
+      - name: Configure buildroot
+        run: make -C buildroot ${{ env.DEFCONFIG }}
+      - name: Build buildroot
+        run: make -C buildroot
+      - name: Upload image
+        uses: actions/upload-artifact@v4
+        with:
+          name: sdcard-img
+          path: ${{ env.O }}/images/sdcard.img
+      - name: Upload rootfs
+        uses: actions/upload-artifact@v4
+        with:
+          name: rootfs-tar
+          path: ${{ env.O }}/images/rootfs.tar
