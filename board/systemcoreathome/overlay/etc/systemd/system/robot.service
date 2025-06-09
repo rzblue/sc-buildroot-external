@@ -1,0 +1,16 @@
+[Unit]
+Description=Main Robot process
+
+[Service]
+User=systemcore
+Type=exec
+ExecStart=/bin/bash -l -c '/home/systemcore/robotCommand'
+
+LimitRTPRIO=50
+
+Restart=always
+RestartSec=100ms
+TimeoutStopSec=1s
+
+[Install]
+WantedBy=basic.target
