@@ -1,1 +1,1 @@
-systemcore -2 systemcore -2 =systemcore /home/systemcore /bin/bash adm,dialout,cdrom,floppy,sudo,audio,video,plugdev,netdev
+systemcore -2 systemcore -2 =systemcore /home/systemcore /bin/bash adm,cdrom,dialout,floppy,video,audio,plugdev,netdev,sudo,systemd-journal
