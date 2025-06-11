@@ -1,0 +1,4 @@
+[NetDev]
+Name=can3
+Kind=vcan
+MTUBytes=16
