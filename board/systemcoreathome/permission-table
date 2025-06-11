@@ -1,0 +1,2 @@
+/home/systemcore/.ssh d 700 systemcore systemcore - -
+/home/systemcore/.ssh/authorized_keys F 600 systemcore systemcore - -
