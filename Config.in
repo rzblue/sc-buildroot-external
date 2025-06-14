@@ -1,1 +1,2 @@
 source "$BR2_EXTERNAL_systemcoreathome_PATH/package/raspi-utils/Config.in"
+source "$BR2_EXTERNAL_systemcoreathome_PATH/package/openjdk-bin-aarch64/Config.in"

@@ -1,0 +1,6 @@
+config BR2_PACKAGE_OPENJDK_BIN_AARCH64
+	bool "openjdk-bin-aarch64"
+	depends on BR2_aarch64
+	depends on BR2_TOOLCHAIN_HAS_THREADS
+	help
+	  Prebuilt OpenJDK JRE for aarch64 Linux
