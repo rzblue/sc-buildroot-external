@@ -1,10 +1,10 @@
 [Match]
 Type=can
 # Pi 5 only
-Path=platform-1f00050000.spi-cs-0
+Path=platform-1f00054000.spi-cs-0 
 
 [Link]
-Name=can0_s
+Name=can1_s
 
 RxCoalesceIrqSec=1000us
 RxMaxCoalescedIrqFrames=16

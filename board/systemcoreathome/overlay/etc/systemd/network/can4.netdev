@@ -1,4 +1,4 @@
 [NetDev]
-Name=can2
+Name=can4_s
 Kind=vcan
 MTUBytes=16
