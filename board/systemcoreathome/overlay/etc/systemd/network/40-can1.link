@@ -4,7 +4,7 @@ Type=can
 Path=platform-1f00054000.spi-cs-0 
 
 [Link]
-Name=can1_s
+Name=can_s1
 
 RxCoalesceIrqSec=1000us
 RxMaxCoalescedIrqFrames=16
