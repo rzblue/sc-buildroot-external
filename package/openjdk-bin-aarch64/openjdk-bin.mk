@@ -9,8 +9,7 @@ OPENJDK_BIN_AARCH64_INSTALL_BASE = /usr/lib/jvm
 define OPENJDK_BIN_AARCH64_INSTALL_TARGET_CMDS
 mkdir -p $(TARGET_DIR)$(OPENJDK_BIN_AARCH64_INSTALL_BASE)
 cp -dpfr $(@D)/* $(TARGET_DIR)$(OPENJDK_BIN_AARCH64_INSTALL_BASE)
-cd $(TARGET_DIR)/usr/bin
-ln -snf -t . ../../$(OPENJDK_BIN_AARCH64_INSTALL_BASE)/bin/*
+cd $(TARGET_DIR)/usr/bin && ln -snf -t . ../..$(OPENJDK_BIN_AARCH64_INSTALL_BASE)/bin/*
 endef
 
 $(eval $(generic-package))
